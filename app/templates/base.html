@@ -1,0 +1,14 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - Vulnerability Scanner</title>
+    {% else %}
+    <title>Vulnerability Scanner</title>
+    {% endif %}
+  </head>
+  <body>
+    <div>Vulnerability Scanner: <a href="/scanner">Scanner</a></div>
+    <hr>
+    {% block content %}{% endblock %}
+  </body>
+</html>

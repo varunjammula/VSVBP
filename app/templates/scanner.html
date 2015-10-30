@@ -1,0 +1,35 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <script type="text/javascript">
+    function set_url(set_url)
+    {
+        form = document.forms['scanner'];
+        form.elements['seed_url'].value = seed_url;
+    }
+    </script>
+    <form action="" method="post" name="scanner">
+    <center>
+        <h3>VSVBP Tool - Vulnerability detection to Secure Web Applications Via Blackbox Procedure </h3>
+        {{ form.hidden_tag() }}
+        <p>
+            Please enter the URL (http/https):<br>
+            {{ form.seed_url(size=40,autocomplete="on") }}
+            {% for error in form.seed_url.errors %}
+                <br><span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.example1}}
+            <input type="submit" value="Scan"><br>
+        </p>
+        </center>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+    {% for message in messages %}
+        {{ message }} <br>
+    {% endfor %}
+
+    {% endif %}{% endwith %}
+{% endblock %}
